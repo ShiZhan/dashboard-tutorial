@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.19
+FROM phusion/baseimage:0.9.22
 MAINTAINER Zhan.Shi <g.shizhan.g@gmail.com>
 
 RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
