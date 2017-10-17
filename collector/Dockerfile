@@ -13,4 +13,4 @@ VOLUME ["/var/log/collectl"]
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
 
-CMD ["/run.sh && /sbin/init"]
+CMD ["/run.sh"]
