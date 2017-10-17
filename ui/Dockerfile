@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.19
+FROM phusion/baseimage:0.9.22
 MAINTAINER Zhan.Shi <g.shizhan.g@gmail.com>
 
 RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
@@ -22,6 +22,10 @@ VOLUME ["/influx-data"]
 EXPOSE 3000
 # influxdb admin, http, udp, cluster
 EXPOSE 8083 8086 8086/udp 8088
+# influxdb collectd
+EXPOSE 25826
+# influxdb graphite
+EXPOSE 2003
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
