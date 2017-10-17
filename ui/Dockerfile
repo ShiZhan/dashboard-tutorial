@@ -9,26 +9,18 @@ RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# generate default influxdb configuration file
-RUN influxd config > /etc/influxdb.toml
-# use /data for all influx disk storage
-RUN sed -i 's/dir = "\/.*influxdb/dir = "\/influx-data/' /etc/influxdb.toml
-# enable collectd collector
-RUN sed -i 's/\[\[collectd\]\]/\[\[collectd\]\]\n  enabled = true/' /etc/influxdb.toml
 # enable graphite collector
-RUN sed -i 's/\[\[graphite\]\]/\[\[graphite\]\]\n  enabled = true/' /etc/influxdb.toml
+RUN sed -i 's/\[\[graphite\]\]/\[\[graphite\]\]\n  enabled = true/' /etc/influxdb/influxdb.conf
 
 # grafana data and config
 VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 # influxdb data
-VOLUME ["/influx-data"]
+VOLUME ["/var/lib/influxdb"]
 
 # grafana http
 EXPOSE 3000
 # influxdb admin, http, udp, cluster
 EXPOSE 8083 8086 8086/udp 8088
-# influxdb collectd
-EXPOSE 25826
 # influxdb graphite
 EXPOSE 2003
 
