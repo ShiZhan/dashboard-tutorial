@@ -8,7 +8,7 @@ Connect to local monitor (influxdb with graphite support).
 docker run -d --name collectl \
            -h "$HOST""-docker" \
            -v $PWD/collectl:/var/log/collectl \
-           daocloud.io/zhan2016/collectl-docker:master-91c52c0
+           daocloud.io/zhan2016/collectl-docker
 ```
 
 Connect to a designated monitor.
@@ -18,7 +18,7 @@ docker run -d --name collectl \
            -h "$HOST""-docker" \
            -v $PWD/collectl:/var/log/collectl \
            -e GRAPHITE_ADDR=10.0.0.11:2003
-           daocloud.io/zhan2016/collectl-docker:master-91c52c0
+           daocloud.io/zhan2016/collectl-docker
 ```
 
 Start with fully customized options.
@@ -27,7 +27,7 @@ Start with fully customized options.
 docker run -d --name collectl \
            -h "$HOST""-docker" \
            -v $PWD/collectl:/var/log/collectl \
-           daocloud.io/zhan2016/collectl-docker:master-91c52c0 \
+           daocloud.io/zhan2016/collectl-docker
            collectl -i1 -scdmnstxyCDMNTXY --dskfilt sd -f /var/log/collectl --rawtoo --export graphite,10.0.0.11:2003,d=1,s=cdmnstxyCDMNTXY
 ```
 
