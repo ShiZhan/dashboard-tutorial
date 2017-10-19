@@ -10,13 +10,7 @@ ADD insecure-key.pub /root/.ssh/id_rsa.pub
 RUN chmod 600 /root/.ssh/id_rsa
 RUN chmod 644 /root/.ssh/id_rsa.pub
 
-# collectl data
-VOLUME ["/var/log/collectl"]
-
 # colmux port
 EXPOSE 2655
 
-ADD run.sh /run.sh
-RUN chmod +x /run.sh
-
-CMD ["/run.sh && /sbin/init"]
+CMD ["/sbin/init"]
