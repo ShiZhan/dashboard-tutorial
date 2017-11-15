@@ -9,14 +9,21 @@ RUN curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# no need to report usage in vm, either grafana or influxdb, just turn them off.
-RUN sed -i "s/;reporting_enabled = true/reporting_enabled = false/g" /etc/grafana/grafana.ini
-RUN sed -i "s/# reporting-disabled = false/reporting-disabled = true/g" /etc/influxdb/influxdb.conf
-# enable graphite collector
-RUN sed -i 's/\[\[graphite\]\]/\[\[graphite\]\]\n  enabled = true/' /etc/influxdb/influxdb.conf
+# simplify behavior in vm or container, turn off reporting and update, remember login.
+RUN sed -i \
+    -e "s/;reporting_enabled = true/reporting_enabled = false/g" \
+    -e "s/;check_for_updates = true/check_for_updates = false/g" \
+    -e "s/;login_remember_days = .*/login_remember_days = 365/g" \
+    /etc/grafana/grafana.ini
+
+# disable report, enable graphite receiver.
+RUN sed -i \
+    -e "s/# reporting-disabled = false/reporting-disabled = true/g" \
+    -e "s/\[\[graphite\]\]/\[\[graphite\]\]\n  enabled = true/" \
+    /etc/influxdb/influxdb.conf
 
 # grafana data and config
-#VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
+VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 # influxdb data
 VOLUME ["/var/lib/influxdb"]
 
