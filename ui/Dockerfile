@@ -19,7 +19,7 @@ RUN sed -i \
 # disable report, enable graphite receiver.
 RUN sed -i \
     -e "s/# reporting-disabled = false/reporting-disabled = true/g" \
-    -e "s/\[\[graphite\]\]/\[\[graphite\]\]\n  enabled = true/" \
+    -e "s/^\[\[graphite\]\]$/\[\[graphite\]\]\\n  enabled = true/g" \
     /etc/influxdb/influxdb.conf
 
 # grafana data and config

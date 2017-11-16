@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     dm.vm.network "forwarded_port", guest: 2003, host: 2003, protocol: "tcp"
     dm.vm.network "forwarded_port", guest: 2003, host: 2003, protocol: "udp"
     dm.vm.hostname = "dashboard-machine"
-    dm.vm.synced_folder "#{data_host}", "#{data_guest}", create: true, owner: "root", group: "root", mount_options: ["dmode=777", "fmode=666"
+    dm.vm.synced_folder "#{data_host}", "#{data_guest}", create: true, owner: "root", group: "root", mount_options: ["dmode=777", "fmode=666"]
     dm.vm.synced_folder "#{pkgs_host}", "#{pkgs_guest}", create: true, owner: "root", group: "root"
 
     dm.vm.provision "shell", inline: <<-SHELL
