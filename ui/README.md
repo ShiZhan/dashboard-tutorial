@@ -16,3 +16,12 @@ docker run -d --name grafana \
            -v $HOME/.monitoring/var/lib/influxdb:/var/lib/influxdb \
            daocloud.io/zhan2016/grafana-influxdb-docker
 ```
+
+to run dashboard-machine instead of containerized version.
+
+```bash
+vagrant up
+```
+
+influxdb data will be put into **./data** diractory.
+
