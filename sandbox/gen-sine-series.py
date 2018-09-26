@@ -11,7 +11,7 @@ points = ["sine value=%f %d000000000" % (math.sin(math.radians(x)), int(now) + x
 print("\n".join(points[:3]) + "\n...\n" + "\n".join(points[-3:-1]))
 
 data = ('\n'.join(points) + '\n').encode('utf-8')
-r = requests.post(POST_URL, params=ACCESS_PARA, data=data)
+r = requests.post(POST_URL, params=PARAMS, data=data)
 status_code = r.status_code
 if status_code >= 300 or status_code < 200:
     print('Error: ' + status_code)
