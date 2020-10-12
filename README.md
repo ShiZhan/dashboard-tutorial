@@ -1,15 +1,14 @@
 # cluster monitor
 
-## grafana+influxdb
+## grafana+prometheus
 
 Dashboard and database
 
-## collectl
+## prometheus exporter
 
 Data collector
 
 ## sandbox
 
 Synthetic time series data source for testing
-
 
