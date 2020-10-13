@@ -5,7 +5,7 @@ Extract packages in this folder.
 Example layout:
 
 ```Bash
-dashboard/apps   master ●✚  tree -L 2
+dashboard/apps > master > tree -L 2
 .
 ├── grafana-7.2.1
 │   ├── bin
