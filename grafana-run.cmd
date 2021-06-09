@@ -4,8 +4,8 @@ set DASHBOARD_HOME=%BUNDLE_DIR%
 set CONF_DIR=%DASHBOARD_HOME%\conf
 set APPS_DIR=%DASHBOARD_HOME%\apps
 
-set GRAF_DIR=%APPS_DIR%\grafana-7.2.1
-set PROM_DIR=%APPS_DIR%\prometheus-2.21.0.windows-amd64
+set GRAF_DIR=%APPS_DIR%\grafana-7.5.7
+set PROM_DIR=%APPS_DIR%\prometheus-2.27.1.windows-amd64
 
 set PATH=%GRAF_DIR%\bin;%PROM_DIR%;%APPS_DIR%;%PATH%
 
